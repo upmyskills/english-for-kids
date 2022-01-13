@@ -1,0 +1,213 @@
+@import '../../assets/stylevariables.scss';
+
+.statistic {
+  &__table {
+    width: 80vw;
+    max-width: 1920px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    border: 5px solid $train-color;
+    border-radius: .4rem;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Neucha', cursive;
+    font-size: 20px;
+    min-width: 400px;
+    padding: 10px 0;
+    border-bottom: 3px solid $train-color;
+
+    .item {
+      &__word {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        min-width: 100px;
+        width: 20%;
+      }
+
+      &__translate {
+        padding: 0 10px;
+        width: 35%;
+        min-width: 100px;
+      }
+
+      &__count,
+      &__correct,
+      &__wrong,
+      &__percent {
+        padding: 0 10px 0 5px;
+        width: 10%;
+      }
+
+      &__percent {
+        text-align: right;
+        width: 10%;
+      }
+    }
+  }
+
+  &__item:last-child {
+    border-bottom: none;
+  }
+
+  &__item:nth-child(odd) {
+    background-color: rgba(133, 121, 121, 0.2);
+  }
+}
+
+.item-header {
+  &__word,
+  &__translate,
+  &__correct,
+  &__wrong,
+  &__count,
+  &__percent {
+    font-size: 25px;
+    font-weight: 600;
+    height: 20px;
+  }
+  
+  &__word {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 10px;
+    min-width: 100px;
+    width: 20%;
+    background: url('./icons/united-kingdom.png') 10px / contain no-repeat;
+    transition: all .3s ease-in-out;
+  }
+
+  &__translate {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-end;
+    padding: 0 10px;
+    width: 35%;
+    min-width: 100px;
+    background: url('./icons/russia.png') 10px / contain no-repeat;
+  }
+  
+  &__count,
+  &__correct,
+  &__wrong,
+  &__percent {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-end;
+    padding: 0 10px 0 5px;
+    width: 10%;
+  }
+
+  &__count {
+    background: url('./icons/total.png') left / contain no-repeat;
+  }
+
+  &__correct {
+    background: url('./icons/correct.png') left / contain no-repeat;
+  }
+
+  &__wrong {
+    background: url('./icons/wrong.png') left / contain no-repeat;
+  }
+
+  &__percent {
+    text-align: right;
+    width: 10%;
+    background: url('./icons/percent.png') left / contain no-repeat;
+  }
+
+
+  &__sort-up,
+  &__sort-down {
+    position: relative;
+    opacity: .3;
+    cursor: pointer;
+    width: 4px;
+    height: 100%;
+    background: #000;
+    margin: 0 4px;
+
+    &:hover,
+    &:hover::after,
+    &:hover:before {
+      opacity: 1;
+      background-color: $train-color;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.sorted {
+      opacity: 1;
+      background-color: $train-color;
+    }
+  }
+
+  &__sort-up:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: -4px;
+    width: 15px;
+    height: 4px;
+    background: #000;
+    transform: rotate(75deg);
+  }
+
+  &__sort-up:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: -4px;
+    width: 15px;
+    height: 4px;
+    background: #000;
+    transform: rotate(-75deg);
+  }
+
+  &__sort-down:before {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: -4px;
+    width: 15px;
+    height: 4px;
+    background: #000;
+    transform: rotate(-75deg);
+  }
+
+  &__sort-down:after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    right: -4px;
+    width: 15px;
+    height: 4px;
+    background: #000;
+    transform: rotate(75deg);
+  }
+}
+
+.sorted {
+  opacity: 1 !important;
+  background-color: $train-color;
+}
+
+@media screen and (max-width: 680px) {
+  .statistic__table {
+    overflow: scroll; 
+  }
+
+  .item-header__translate .item-header__sort-up, 
+  .item-header__translate .item-header__sort-down,
+  .item-header__word .item-header__sort-up, 
+  .item-header__word .item-header__sort-down {
+    opacity: 1;
+  }
+}

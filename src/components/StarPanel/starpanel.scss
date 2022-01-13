@@ -1,0 +1,32 @@
+.star-panel {
+  position: absolute;
+  width: 28px;
+  height: 100%;
+  right: 0;
+  top: 0;
+
+  &__area {
+    position: sticky;
+    height: 80vh;
+    top: 5px;
+    padding: 5px;
+    margin: 3px 0;
+    overflow: hidden;
+  }
+
+  &__star {
+    width: 15px;
+    height: 15px;
+    padding: 3px 2px;
+    margin: 2px 0;
+
+    &.wrong {
+      background: url('./icons/starEmpty.png') center / cover no-repeat;
+    }
+
+    &.correct {
+      background: url('./icons/starB.png') center / cover no-repeat;
+
+    }
+  }
+}

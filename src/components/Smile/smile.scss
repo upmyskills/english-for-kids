@@ -1,0 +1,44 @@
+.smile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .6);
+
+  &__image {
+      position: relative;
+      top: 20px;
+  }
+
+  &__text {
+    position: relative;
+    font-size: 2rem;
+    top: 40px;
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 4px black;
+  }
+}
+
+.good-smile,
+.bad-smile {
+  position: relative;
+  top: 5vh;
+  width: 60vw;
+  height: 50vw;
+  max-height: 65vh;
+  margin: 0 auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.good-smile {
+  background-image: url('./icons/smile-good.png');
+}
+
+.bad-smile {
+  background-image: url('./icons/smile-bad.png');
+}

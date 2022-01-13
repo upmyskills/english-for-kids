@@ -1,0 +1,184 @@
+@import '../../assets/stylevariables.scss';
+
+.card {
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 700px;
+    width: 340px;
+    height: 300px;
+    
+    &.card__item {
+      transform-style: preserve-3d;
+    }
+    
+    &.flipped .card__item {
+      transform-origin: left;
+      transform: rotateY(180deg) translateX(-100%);
+      
+      & .card__image,
+      & .card__panel {
+        transform: scale(-1, 1);
+      }
+
+      & .card__panel .card__flip {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    position: relative;
+    width: 300px;
+    height: 260px;
+    padding: 2px;
+    border-radius: .4rem;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+    transition: all .4s ease-in-out;
+    background-color: $play-color;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+    
+    &:hover {
+      box-shadow: 0px 0px 14px rgba(0, 0, 0, 1);
+      transform: translate3d(0, 0, 25px);
+      z-index: 10;
+    }
+
+    &:hover .card__flip {
+      opacity: 1;
+    }
+
+    &.train > .card__image {
+      height: 80% !important;
+    }
+
+    .wrong,
+    .correct {
+      transition: all 0.4s ease-in-out;
+    }
+
+    &.wrong::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: rgba(209, 32, 32, .7);
+    }
+
+    &.correct::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: rgba(100, 207, 45, .7);
+    }
+
+    &.guessed::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(168, 168, 167, 0.7);
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 255px;
+    border-radius: .4rem;
+    transition: transform 0s ease-in-out .2s,
+                height .2s ease-in-out 0s;
+  }
+
+  &__panel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-bottom-left-radius: .4rem;
+    border-bottom-right-radius: .4rem;
+    height: 20%;
+    transition: transform .0s ease-in-out .2s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 100%;
+      height: 14px;
+      background-color: $train-color;
+    }
+  }
+
+  &__word {
+    font-family: $eng-font;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 32px;
+    user-select: none;
+
+    &.translate {
+      font-family: $rus-font;
+    }
+  }
+
+  &__flip {
+    opacity: 0;
+    position: absolute;
+    width: 45px;
+    height: 40px;
+    bottom: 0;
+    right: 20px;
+    transition: all .2s ease-in-out;
+    background: url('./img/rotate.svg') center / contain no-repeat;
+    animation: breath 1s ease-in-out infinite;
+
+    &:hover {
+      animation-play-state: running;
+    }
+
+    @keyframes breath {
+      0% { transform: scaleX(1) scaleY(1);}
+      50% { transform: scaleX(1.3) scaleY(1.4); }
+    }
+  }
+}
+
+.train {
+  background-color: $train-color;
+}
+
+@media screen and (max-width: 341px) {
+  .card {
+    &__container {
+      width: 300px;
+      height: 240px;
+    } 
+
+    &__item {
+      cursor: pointer;
+      position: relative;
+      width: 240px;
+      height: 200px;
+    }
+
+    &__image {
+      height: 196px;
+    }
+
+    &__word {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+}

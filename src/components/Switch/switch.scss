@@ -1,0 +1,90 @@
+@import '../../assets/stylevariables.scss';
+
+.switch {
+  cursor: pointer;;
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+
+  &-text {
+    user-select: none;
+    position: absolute;
+    color: #eee;
+    text-shadow: 1px 1px 4px rgba(0,0,0,.7);
+    font-size: 24px;
+    right: 4px;
+    text-transform: capitalize;
+  }
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $play-color;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: .4rem;
+
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    right: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: .4rem;
+    box-shadow: inset 0px 0px 4px #000;
+  }
+
+  &.train {
+    background-color: $train-color;
+  }
+
+  & ~ .switch-text {
+    right: 10px;
+    animation: blinkTwo .7s ease-in-out;
+  }
+
+  &.train ~ .switch-text {
+    left: 10px;
+    animation: blink .7s ease-in-out;
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes blinkTwo {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.switch-input:checked+.switch-slider {
+  background-color: $play-color;
+}
+
+.switch-input:focus+.switch-slider {
+  box-shadow: 0 0 1px #6dd15f;
+}
+
+.switch-input:checked+.switch-slider:before {
+  -webkit-transform: translateX(-66px);
+  -ms-transform: translateX(-66px);
+  transform: translateX(-66px);
+}

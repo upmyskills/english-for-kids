@@ -1,0 +1,16 @@
+.btn-game {
+  display: block;
+  font-size: 34px;
+  width: 25%;
+  margin: auto;
+  animation: show .5s ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
